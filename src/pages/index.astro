@@ -1,81 +1,308 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import ContactForm from "../components/ContactForm.astro";
+import Hero from "../components/Hero.astro";
+
+import Member from "../components/Member.astro";
+import Project from "../components/Project.astro";
+import Supporter from "../components/Supporter.astro";
+import Layout from "../layouts/Layout.astro";
+import type { HeroI } from "../models/hero";
+import type { MemberI } from "../models/member";
+import type { ProjectI } from "../models/project";
+import type { SupporterI } from "../models/supporter";
+
+const dummyProjects: ProjectI[] = [
+  {
+    title: "Project A",
+    imageUrl: "https://picsum.photos/200",
+    body: "   At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    href: "https://www.google.com",
+  },
+  {
+    title: "Project B",
+    imageUrl: "https://picsum.photos/200",
+    body: "   At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    href: "https://www.google.com",
+  },
+  {
+    title: "Project C",
+    imageUrl: "https://picsum.photos/200",
+    body: "   At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    href: "https://www.google.com",
+  },
+  {
+    title: "Project D",
+    imageUrl: "https://picsum.photos/200",
+    body: "   At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    href: "https://www.google.com",
+  },
+  {
+    title: "Project E",
+    imageUrl: "https://picsum.photos/200",
+    body: "   At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    href: "https://www.google.com",
+  },
+  {
+    title: "Project F",
+    imageUrl: "https://picsum.photos/200",
+    body: "   At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+    href: "https://www.google.com",
+  },
+];
+
+const dummyMembers: MemberI[] = [
+  {
+    preName: "Max",
+    lastName: "Mustermann",
+    profileUrl: "https://picsum.photos/200",
+    body: " At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  },
+  {
+    preName: "Max",
+    lastName: "Mustermann",
+    profileUrl: "https://picsum.photos/200",
+    body: " At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  },
+  {
+    preName: "Max",
+    lastName: "Mustermann",
+    profileUrl: "https://picsum.photos/200",
+    body: " At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  },
+  {
+    preName: "Max",
+    lastName: "Mustermann",
+    profileUrl: "https://picsum.photos/200",
+    body: " At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  },
+  {
+    preName: "Max",
+    lastName: "Mustermann",
+    profileUrl: "https://picsum.photos/200",
+    body: " At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  },
+  {
+    preName: "Max",
+    lastName: "Mustermann",
+    profileUrl: "https://picsum.photos/200",
+    body: " At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  },
+  {
+    preName: "Max",
+    lastName: "Mustermann",
+    profileUrl: "https://picsum.photos/200",
+    body: " At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  },
+  {
+    preName: "Max",
+    lastName: "Mustermann",
+    profileUrl: "https://picsum.photos/200",
+    body: " At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  },
+];
+
+const dummySupporter: SupporterI[] = [
+  {
+    imageUrl: "https://picsum.photos/500",
+    href: "https://www.google.com",
+    title: "Supporter A",
+  },
+  {
+    imageUrl: "https://picsum.photos/500",
+    href: "https://www.google.com",
+    title: "Supporter B",
+  },
+  {
+    imageUrl: "https://picsum.photos/500",
+    href: "https://www.google.com",
+    title: "Supporter C",
+  },
+  {
+    imageUrl: "https://picsum.photos/500",
+    href: "https://www.google.com",
+    title: "Supporter D",
+  },
+];
+
+const dummyHero: HeroI = {
+  imageUrl:
+    "https://www.adorama.com/alc/wp-content/uploads/2018/11/landscape-photography-tips-yosemite-valley-feature-825x465.jpg",
+};
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+<Layout title="Welcome to TAC.">
+  <section id="home" class="p-0">
+    <Hero hero={dummyHero} />
+  </section>
+
+  <section id="about">
+    <div class="container mx-auto min-h-screen flex flex-col justify-center">
+      <h2 class="text-6xl text-center uppercase">About</h2>
+      <div class="flex flex-col lg:flex-row gap-8 my-16">
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+          ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+          sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+          et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+          takimata sanctus est Lorem ipsum dolor sit amet.
+          <br />
+          <br />
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+          eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+          voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+          amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+          sit amet.
+          <br />
+          <br />
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+          eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+          voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+          amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+          sit amet.
+        </p>
+
+        <p>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+          ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+          sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+          et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+          takimata sanctus est Lorem ipsum dolor sit amet.
+          <br />
+          <br />
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+          eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+          voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+          amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+          sit amet.
+          <br />
+          <br />
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+          eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+          voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+          amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+          sit amet.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container mx-auto min-h-screen flex flex-col justify-center">
+      <h2 class="text-6xl text-center uppercase">Projects</h2>
+      <div class="component-grid my-20">
+        {dummyProjects.map((project) => <Project project={project} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section id="locations" class="p-0+ü">
+    <div class="container mx-auto min-h-screen flex flex-col justify-center">
+      <h2 class="text-6xl mb-8 text-center uppercase">Locations</h2>
+      <div
+        class="w-full h-screen my-16"
+        style="background-image: url('https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg')">
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="container mx-auto min-h-screen flex flex-col justify-center">
+      <h2 class="text-6xl mb-8 text-center uppercase">Team</h2>
+      <div class="members-grid my-20">
+        {dummyMembers.map((member) => <Member member={member} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container mx-auto flex flex-col justify-center lg:items-center">
+      <h2 class="text-6xl mb-8 text-center uppercase">Contact</h2>
+      <ContactForm email="test@mail.at" header="Testheader" />
+    </div>
+  </section>
+
+  <!-- SUPPORTER -->
+  <section id="supporter">
+    <div class="container mx-auto min-h-screen flex flex-col justify-center">
+      <h2 class="text-6xl mb-8 text-center uppercase">Supporter</h2>
+      <div class="supporters-grid my-20">
+        {dummySupporter.map((supporter) => <Supporter supporter={supporter} />)}
+      </div>
+      <footer class="flex flex-col text-center items-center justify-center">
+        <a href="https://www.teleagriculture.org">
+          <img
+            class="w-40 h-auto mb-8"
+            src="https://teleagriculture.org/wp-content/uploads/2019/03/tac_logo_color-300x215.png"
+            alt=""
+          />
+        </a>
+        <span>Copyright 2022</span>
+        <span
+          >All rights owned and reserved by TeleArgiCulture.org, marart.org</span
+        >
+        <span>& the Artists.</span>
+      </footer>
+    </div>
+  </section>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+  main {
+    margin: auto;
+    padding: 1.5rem;
+    max-width: 60ch;
+  }
+
+  section {
+    padding: 16px;
+  }
+
+  .component-grid {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 16px;
+  }
+
+  .members-grid {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .supporters-grid {
+    display: grid;
+    justify-items: stretch;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
 </style>

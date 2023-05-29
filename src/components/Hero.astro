@@ -1,0 +1,22 @@
+---
+import type { HeroI } from "../models/hero";
+
+export interface Props {
+  hero: HeroI;
+}
+
+const { hero } = Astro.props;
+---
+
+<div id="hero-background" class=" mx-auto w-full h-screen flex flex-col content-center text-align" style="background-image: url(https://www.adorama.com/alc/wp-content/uploads/2018/11/landscape-photography-tips-yosemite-valley-feature-825x465.jpg)">
+  <h1>{hero.title}</h1>
+  <h2>{hero.subTitle}</h2>
+  <p>{hero.description}</p>
+</div>
+<style>
+  #hero-background{
+    background-repeat: none;
+    background-size:cover;
+    background-repeat: no-repeat;
+  }
+</style>

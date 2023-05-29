@@ -1,0 +1,16 @@
+---
+
+import type { SupporterI } from "../models/supporter";
+
+export interface Props {
+  supporter: SupporterI;
+}
+
+const { supporter } = Astro.props;
+---
+
+<div class="md:max-w-xs flex flex-col items-center gap-4 mb-8">
+  <img class="w-40 align-self-center" src={supporter.imageUrl} />
+ <a href={supporter.href}></a>
+</div>
+<style></style>
